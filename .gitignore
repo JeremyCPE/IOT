@@ -1,0 +1,14 @@
+app_android/*.iml
+app_android/.gradle
+app_android/local.properties
+app_android/.idea/caches
+app_android/.idea/libraries
+app_android/.idea/modules.xml
+app_android/.idea/workspace.xml
+app_android/.idea/navEditor.xml
+app_android/.idea/assetWizardSettings.xml
+app_android/.DS_Store
+app_android/build
+app_android/captures
+app_android/.externalNativeBuild
+app_android/.cxx
