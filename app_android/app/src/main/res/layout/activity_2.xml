@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Activity2">
+
+    <TextView
+        android:id="@+id/firstText"
+        android:layout_width="167dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="140dp"
+        android:text="Température"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/secondText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/thirdText"
+        android:layout_width="167dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="116dp"
+        android:text="Humidité"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondText"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <Button
+        android:id="@+id/thirdUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:drawableTop="@android:drawable/arrow_up_float"
+        android:text="UP"
+        app:layout_constraintBottom_toBottomOf="@+id/thirdText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/thirdText"
+        app:layout_constraintTop_toTopOf="@+id/thirdText"
+        app:layout_constraintVertical_bias="0.785" />
+
+    <TextView
+        android:id="@+id/secondText"
+        android:layout_width="167dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="124dp"
+        android:text="Luminosité"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstText" />
+
+    <Button
+        android:id="@+id/secondDownButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:layout_marginBottom="76dp"
+        android:drawableBottom="@android:drawable/arrow_down_float"
+        android:text="DOWN"
+        app:layout_constraintBottom_toTopOf="@+id/thirdUpButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/secondText" />
+
+    <Button
+        android:id="@+id/secondUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:drawableTop="@android:drawable/arrow_up_float"
+        android:text="UP"
+        app:layout_constraintBottom_toTopOf="@+id/secondDownButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/secondText"
+        app:layout_constraintTop_toBottomOf="@+id/firstDownButton"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/firstDownButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:drawableBottom="@android:drawable/arrow_down_float"
+        android:text="DOWN"
+        app:layout_constraintBottom_toBottomOf="@+id/firstText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintStart_toEndOf="@+id/firstText"
+        app:layout_constraintTop_toTopOf="@+id/firstText"
+        app:layout_constraintVertical_bias="0.968" />
+
+    <Button
+        android:id="@+id/diffuseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Envoyer les données"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:drawableLeft="@android:drawable/ic_menu_share"
+        android:drawableStart="@android:drawable/ic_menu_share" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
