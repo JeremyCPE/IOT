@@ -1,6 +1,7 @@
 
 package com.example.projet_iot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,8 +17,8 @@ public class Activity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
-        //this.ip = ip;
-        //this.port = port;
+        this.ip = this.getIntent().getStringExtra("IP_ADDR");
+        this.port = this.getIntent().getIntExtra("PORT",8080);
         final Button firstDownButton = findViewById(R.id.firstDownButton);
         final Button secondUpButton = findViewById(R.id.secondUpButton);
         final Button secondDownButton = findViewById(R.id.secondDownButton);
