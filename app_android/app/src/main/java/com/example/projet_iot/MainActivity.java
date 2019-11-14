@@ -2,12 +2,11 @@ package com.example.projet_iot;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
