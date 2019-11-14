@@ -100,14 +100,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(isConfigOk){
-            /*
-            Intent iotControlActivity = new Intent(this,classname.class);
+            Intent iotControlActivity = new Intent(this,Activity2.class);
             iotControlActivity.putExtra(IP_ADDR,ip_address);
             iotControlActivity.putExtra(PORT,port);
             startActivity(iotControlActivity);
-            */
-            msg_usr = Toast.makeText(this.getApplicationContext(),"Lancement de l'activité de contrôle",Toast.LENGTH_LONG);
-            msg_usr.show();
+            //msg_usr = Toast.makeText(this.getApplicationContext(),"Lancement de l'activité de contrôle",Toast.LENGTH_LONG);
+            //msg_usr.show();
         }
     }
 }

@@ -16,8 +16,8 @@ public class Activity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
-        this.ip = ip;
-        this.port = port;
+        //this.ip = ip;
+        //this.port = port;
         final Button firstDownButton = findViewById(R.id.firstDownButton);
         final Button secondUpButton = findViewById(R.id.secondUpButton);
         final Button secondDownButton = findViewById(R.id.secondDownButton);
