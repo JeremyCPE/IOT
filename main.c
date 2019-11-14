@@ -380,7 +380,7 @@ void rf_config(void)
 
 
 uint8_t chenillard_active = 1;
-void handle_rf_rx_data(void)
+int8_t handle_rf_rx_data(void)
 {
 	uint8_t data[RF_BUFF_LEN];
 	int8_t ret = 0;
@@ -410,6 +410,7 @@ void handle_rf_rx_data(void)
 			}
 			break;
 	}
+    return ret;
 }
 
 static volatile uint32_t cc_tx = 0;
@@ -496,6 +497,7 @@ int main(void)
 
 	while (1) {
         uint8_t status = 0;
+        int8_t ordre = 0;
 		
         /* Verify that chenillard is enable */
         if (chenillard_active == 1) {
@@ -528,6 +530,61 @@ int main(void)
 					humidity / 10, humidity % 10,uv);*/
 
             /* Update display */
+
+            if (ordre != 0) {
+                if (ordre[0] == "T") {
+                    snprintf(data, 20, "Temp: %d", temp / 10);
+                    display_line(2, 0, data);
+                    if (ordre[1] == "L") {
+                        snprintf(data, 20, "Lux: %d", lux / 10);
+                        display_line(4, 0, data);
+                        snprintf(data, 20, "Temp: %d", temp / 10);
+                        display_line(6, 0, data);
+                    }
+                    else{
+                        snprintf(data, 20, "Temp: %d", temp / 10);
+                        display_line(4, 0, data);
+                        snprintf(data, 20, "Lux: %d", lux / 10);
+                        display_line(6, 0, data);
+                    }
+                    
+                }
+                else if (ordre[0] == "L") {
+                    snprintf(data, 20, "Lux: %d", lux);
+                    display_line(2, 0, data);
+                    if (ordre[1] == "T") {
+                        snprintf(data, 20, "Temp: %d", temp / 10);
+                        display_line(4, 0, data);
+                        snprintf(data, 20, "Humidity: %d", humidity / 10);
+                        display_line(6, 0, data);
+                    }
+                    else {
+                        snprintf(data, 20, "Humidity: %d", humidity / 10);
+                        display_line(4, 0, data);
+                        snprintf(data, 20, "Temp: %d", temp / 10);
+                        display_line(6, 0, data);
+                    }
+                }
+                else {
+                    snprintf(data, 20, "Humidity: %d", humidity / 10);
+                    display_line(2, 0, data);
+                    if (ordre[1] == "T") {
+                        snprintf(data, 20, "Temp: %d", temp / 10);
+                        display_line(4, 0, data);
+                        snprintf(data, 20, "Lux: %d", lux / 10);
+                        display_line(6, 0, data);
+                    }
+                    else{
+                        snprintf(data, 20, "Lux: %d", lux / 10);
+                        display_line(4, 0, data);
+                        snprintf(data, 20, "Temp: %d", temp / 10);
+                        display_line(6, 0, data);
+                    }
+                    
+                }
+            }
+
+
 			snprintf(data, 20, "Temp: %d", temp / 10);
 			display_line(2, 0, data);
 			snprintf(data, 20, "Lux: %d", lux);
@@ -571,7 +628,8 @@ int main(void)
 		}
 		if (check_rx == 1) {
 			check_rx = 0;
-			handle_rf_rx_data();
+			ordre = handle_rf_rx_data();
+            uprintf(UART0, "Données recues: %d", ordre);
 		}
 	}
 	return 0;
