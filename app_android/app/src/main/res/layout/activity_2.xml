@@ -107,6 +107,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:drawableLeft="@android:drawable/ic_menu_share"
-        android:drawableStart="@android:drawable/ic_menu_share" />
+        android:drawableStart="@android:drawable/ic_menu_share"
+        android:onClick="testEnvoyerVersServeur"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
