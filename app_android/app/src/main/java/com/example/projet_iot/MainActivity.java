@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
-    public final String IP_ADDR = "com.example.projet_iot.IP_ADDR";
-    public final String PORT = "com.example.projet_iot.PORT";
+    public final String IP_ADDR = "IP_ADDR";
+    public final String PORT = "PORT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(isConfigOk){
+            msg_usr = Toast.makeText(this.getApplicationContext(),ip_address+":"+port,Toast.LENGTH_LONG);
+            msg_usr.show();
             Intent iotControlActivity = new Intent(this,Activity2.class);
             iotControlActivity.putExtra(IP_ADDR,ip_address);
             iotControlActivity.putExtra(PORT,port);

@@ -25,7 +25,7 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
 
     @Override
     protected Void doInBackground(Void... rien) {
-
+        Toast msg_usr;
         while(true){
             byte[] data = new byte [256];
             DatagramPacket packet = new DatagramPacket(data, data.length);

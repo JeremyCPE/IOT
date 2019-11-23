@@ -91,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:inputType="number"
-                android:hint="12"
+                android:hint="16"
                 android:id="@+id/ip_4"/>
         </LinearLayout>
         <LinearLayout
