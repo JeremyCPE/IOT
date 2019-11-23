@@ -26,7 +26,7 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
         Toast msg_usr;
         while(true){
             byte[] data = new byte [256];
-            Log.d("action","LaunchDoInBackground")
+            Log.d("action","LaunchDoInBackground");
             DatagramPacket packet = new DatagramPacket(data, data.length);
             try {
                 UDPSocket.receive(packet);
