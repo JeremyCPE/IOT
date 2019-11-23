@@ -58,7 +58,7 @@
 #error Either RF_868MHz or RF_915MHz MUST be defined.
 #endif
 
-define DEBUG 1
+#define DEBUG 1
 #define BUFF_LEN 60
 #define RF_BUFF_LEN  64
 
@@ -390,7 +390,7 @@ int8_t handle_rf_rx_data(void)
 	ret = cc1101_receive_packet(data, RF_BUFF_LEN, &status);
 	/* Go back to RX mode */
 	cc1101_enter_rx_mode();
-	&ordre[0] = &data[2];
+	ordre[0] = &data[2];
 
 #ifdef DEBUG
 	uprintf(UART0, "RF: ret:%d, st: %d.\n\r", ret, status);
@@ -531,8 +531,8 @@ int main(void)
 
             /* Update display */
 
-            if (ordre != NULL) {
-                if (ordre. == 'T') {
+            /*if (ordre != NULL) {
+                if (ordre == 'T') {
                     snprintf(data, 20, "Temp: %d", temp / 10);
                     display_line(2, 0, data);
                     if (ordre[1] == 'L') {
@@ -583,14 +583,14 @@ int main(void)
                     
                 }
             }
-			else {
-				snprintf(data, 20, "Temp: %d", temp / 10);
-				display_line(2, 0, data);
-				snprintf(data, 20, "Lux: %d", lux);
-				display_line(3, 0, data);
-				snprintf(data, 20, "Humidity: %d", humidity/10);
-				display_line(4, 0, data);	
-			}
+			else {*/
+			snprintf(data, 20, "Temp: %d", temp / 10);
+			display_line(2, 0, data);
+			snprintf(data, 20, "Lux: %d", lux);
+			display_line(3, 0, data);
+			snprintf(data, 20, "Humidity: %d", humidity/10);
+			display_line(4, 0, data);	
+			//}
 
 			/* And send to screen */
 			ret = ssd130x_display_full_screen(&display);
