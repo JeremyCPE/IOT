@@ -2,14 +2,12 @@ package com.example.projet_iot;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.DatagramSocket;
 
 
 public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
@@ -28,6 +26,7 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
         Toast msg_usr;
         while(true){
             byte[] data = new byte [256];
+            Log.d("action","LaunchDoInBackground")
             DatagramPacket packet = new DatagramPacket(data, data.length);
             try {
                 UDPSocket.receive(packet);
@@ -38,8 +37,10 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
             int size = packet.getLength();
             data = packet.getData();
             if (data.length>0){
-                System.out.println(data);
+                //System.out.println(data);
+                Log.d("data","Data = " + data);
             }
+            publishProgress(java.util.Arrays.copyOf(data, size));
 
         }
     }

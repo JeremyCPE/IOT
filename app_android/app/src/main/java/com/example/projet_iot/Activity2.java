@@ -1,7 +1,6 @@
 
 package com.example.projet_iot;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -79,10 +78,10 @@ public class Activity2 extends AppCompatActivity {
                         (new ReceiverTask(UDPSocket, 10000)).execute();
                         //address = InetAddress.getByName("192.168.1.12");
                         UDPSocket.send(new DatagramPacket(reset, reset.length, ia, port));
-                        Log.println(Log.ASSERT, "action", "reset");
+                        Log.d( "action", "reset");
 
                     } catch (IOException e) {
-                        Log.println(Log.ASSERT, "network", e.toString());
+                        Log.d("network", e.toString());
                     }
                 }
             }).start();
