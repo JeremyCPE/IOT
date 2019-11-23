@@ -75,8 +75,7 @@ public class Activity2 extends AppCompatActivity {
                     try {
                         byte[] reset = "(0)".getBytes();
                         UDPSocket = new DatagramSocket();
-                        (new ReceiverTask(UDPSocket, 10000)).execute();
-                        //address = InetAddress.getByName("192.168.1.12");
+                        (new ReceiverTask(UDPSocket, port,(TextView)findViewById(R.id.firstPrint))).execute();
                         UDPSocket.send(new DatagramPacket(reset, reset.length, ia, port));
                         Log.d( "action", "reset");
 

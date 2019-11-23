@@ -7,6 +7,18 @@
     tools:context=".Activity2">
 
     <TextView
+        android:id="@+id/firstPrint"
+        android:layout_width="167dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="0dp"
+        android:text="Données recu : "
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/firstText"
         android:layout_width="167dp"
         android:layout_height="36dp"
