@@ -122,4 +122,16 @@
         android:drawableStart="@android:drawable/ic_menu_share"
         android:onClick="testEnvoyerVersServeur"/>
 
+    <Button
+        android:id="@+id/receiveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@android:drawable/ic_menu_share"
+        android:drawableLeft="@android:drawable/ic_menu_share"
+        android:onClick="testEnvoyerVersServeur"
+        android:text="Réception"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/diffuseButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

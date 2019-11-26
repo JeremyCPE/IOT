@@ -18,15 +18,15 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class Activity2 extends AppCompatActivity {
     private String ip;
     private int port;
     private SenderTask st;
     //private InetAddress ia;
-    //private DatagramSocket UDPSocket;
-    //private InetAddress address;
-    public Handler mHandler;
+    private DatagramSocket UDPSocket;
+    private InetAddress address;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +38,16 @@ public class Activity2 extends AppCompatActivity {
         final Button secondDownButton = findViewById(R.id.secondDownButton);
         final Button thirdUpButton = findViewById(R.id.thirdUpButton);
         final Button diffuseButton = findViewById(R.id.diffuseButton);
+        final Button receiveButton = findViewById(R.id.receiveButton);
+        final TextView firstPrint = findViewById(R.id.firstPrint);
         final TextView firstText = findViewById(R.id.firstText);
         final TextView secondText = findViewById(R.id.secondText);
         final TextView thirdText = findViewById(R.id.thirdText);
+        final ArrayList<TextView> arrayTextView = new ArrayList<>();
+        arrayTextView.add(firstPrint);
+        arrayTextView.add(firstText);
+        arrayTextView.add(secondText);
+        arrayTextView.add(thirdText);
 
         firstDownButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -63,13 +70,20 @@ public class Activity2 extends AppCompatActivity {
             }
         });
 
-        /*diffuseButton.setOnClickListener(new View.OnClickListener() {
+        diffuseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                sendData("HLT");
             }
-        });*/
+        });
+
+        receiveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sendData("getValues()");
+            }
+        });
+
         st = new SenderTask();
-        (new Thread(){
+/*        (new Thread(){
             public void run(){
                 try {
                     Looper.prepare();
@@ -80,35 +94,27 @@ public class Activity2 extends AppCompatActivity {
                             Log.d("deb_network", msg.toString());
                         }
                     };
-                    (new ReceiverTask(port,ip,mHandler)).run();
+                    (new ReceiverTask(port,ip)).run();
 
                     Looper.loop();
                 } catch (Exception e){
                     Log.d("network", e.toString());
                 }
             }
-            }).start();
-        /*try {
-            ia = InetAddress.getByName(this.ip);
+            }).start();*/
+            //ia = InetAddress.getByName(this.ip);
 
             (new Thread(){
                 public void run(){
                     try {
-                        byte[] reset = "(0)".getBytes();
-                        UDPSocket = new DatagramSocket();
-                        (new ReceiverTask(UDPSocket, port)).execute();
-                        UDPSocket.send(new DatagramPacket(reset, reset.length, ia, port));
-                        Log.d( "action", "reset");
-
+                        (new ReceiverTask(7070, arrayTextView)).execute();
                     } catch (IOException e) {
                         Log.d("network", e.toString());
                     }
                 }
             }).start();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }*/
-    }
+        }
+
 
     public void onDataReceived(Message msg){
         Toast msg_usr;
@@ -143,7 +149,7 @@ public class Activity2 extends AppCompatActivity {
         String txt2 =  tv2.getText().toString().substring(0,1);
         String txt3 =  tv3.getText().toString().substring(0,1);
 
-        sendData("getValues()");
+        //sendData("getValues()");
     }
 
     public void sendData(String data) {
@@ -158,6 +164,7 @@ public class Activity2 extends AppCompatActivity {
                 final int s_port = this.port;//this.getIntent().getIntExtra("PORT",8080);
                 msg_usr = Toast.makeText(this.getApplicationContext(),getIntent().getStringExtra("IP_ADDR")+":"+getIntent().getIntExtra("PORT",8080),Toast.LENGTH_LONG);
                 msg_usr.show();
+                Log.println(Log.ASSERT, "sendData", "envoi de "+data);
                 this.st.UDPSend(data,s_ia,s_port);
 
             } catch (Exception e) {
