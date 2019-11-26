@@ -2,10 +2,8 @@ package com.example.projet_iot;
 
 import android.os.AsyncTask;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-import android.widget.TextView;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -79,7 +77,6 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
     @Override
     protected void onProgressUpdate(byte[]... data) {
         Log.d("data","End Data = " + data.toString());
-        tv.setText(data.toString());
     }
 
 

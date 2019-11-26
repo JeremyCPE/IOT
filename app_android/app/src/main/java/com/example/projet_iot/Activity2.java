@@ -30,11 +30,11 @@ public class Activity2 extends AppCompatActivity {
 
 
     String JSON_STRING = " {" +
-            "  \"temperature\": 12.2," +
-            "  \"light\": 300," +
-            "  \"humidity\": 10" +
+            "  \"temperature\": ?," +
+            "  \"light\": ?," +
+            "  \"humidity\": ?" +
             "} ";
-    String temp="?", light="?", hum = "?";
+    String temp, light, hum;
 
 
 
@@ -78,7 +78,7 @@ public class Activity2 extends AppCompatActivity {
         });
 
 
-
+        //TODO : DEPLACER LE JSON DANS LE onDataReceived(Message msg) (si elle marche)
         try {
             // get JSONObject from JSON file
             JSONObject obj = new JSONObject(JSON_STRING);
@@ -94,11 +94,7 @@ public class Activity2 extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        /*diffuseButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
 
-            }
-        });*/
         st = new SenderTask();
         (new Thread(){
             public void run(){
@@ -168,13 +164,13 @@ public class Activity2 extends AppCompatActivity {
         TextView tv2 = (TextView) findViewById(R.id.secondText);
         TextView tv3 = (TextView) findViewById(R.id.thirdText);
 
-        //sendData(txt1+txt2+txt3);
+
 
         String txt1 =  tv1.getText().toString().substring(0,1);
         String txt2 =  tv2.getText().toString().substring(0,1);
         String txt3 =  tv3.getText().toString().substring(0,1);
-
-        sendData("getValues()");
+        sendData(txt1+txt2+txt3);
+        //sendData("getValues()");
     }
 
     public void sendData(String data) {
