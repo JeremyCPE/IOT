@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -28,6 +28,16 @@ public class Activity2 extends AppCompatActivity {
     //private InetAddress address;
     public Handler mHandler;
 
+
+    String JSON_STRING = " {" +
+            "  \"temperature\": 12.2," +
+            "  \"light\": 300," +
+            "  \"humidity\": 10" +
+            "} ";
+    String temp="?", light="?", hum = "?";
+
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
@@ -37,10 +47,14 @@ public class Activity2 extends AppCompatActivity {
         final Button secondUpButton = findViewById(R.id.secondUpButton);
         final Button secondDownButton = findViewById(R.id.secondDownButton);
         final Button thirdUpButton = findViewById(R.id.thirdUpButton);
-        final Button diffuseButton = findViewById(R.id.diffuseButton);
+
         final TextView firstText = findViewById(R.id.firstText);
         final TextView secondText = findViewById(R.id.secondText);
         final TextView thirdText = findViewById(R.id.thirdText);
+
+        final TextView printTemp =  findViewById(R.id.printTemp);
+        final TextView printHumidity =  findViewById(R.id.printHumidity);
+        final TextView printLuminosity =  findViewById(R.id.printLuminosity);
 
         firstDownButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -63,6 +77,23 @@ public class Activity2 extends AppCompatActivity {
             }
         });
 
+
+
+        try {
+            // get JSONObject from JSON file
+            JSONObject obj = new JSONObject(JSON_STRING);
+            // get carac from JSON
+            temp = obj.getString("temperature");
+            light = obj.getString("light");
+            hum = obj.getString("humidity");
+            // set in TextView's
+            printTemp.setText("Temp.: "+temp + "°C");
+            printLuminosity.setText("Lum.: "+light + "Lux");
+            printHumidity.setText("Hum.:"+hum + "%");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         /*diffuseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

@@ -6,7 +6,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -54,16 +53,18 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
             byte[] data = new byte [256];
             Log.d("action","LaunchDoInBackground");
             DatagramPacket packet = new DatagramPacket(data, data.length);
+            Log.d("action","LaunchDoInBackground2 " + data.length);
             try {
                 UDPSocket.receive(packet);
 
             } catch (IOException e) {
-                Log.d("error",e.toString());
+                Log.d("error", "Error UDPSocket" + e.toString());
                 e.printStackTrace();
             }
             int size = packet.getLength();
+            Log.d("data","Longueur du paquet : " + size);
             data = packet.getData();
-            Log.d("data","Data = " + data);
+
             if (data.length>0){
                 Message msgToSend = new Message();
                 msgToSend.obj = data.toString();
@@ -72,9 +73,14 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
             publishProgress(java.util.Arrays.copyOf(data, size));
 
         }
+
     }
 
-    protected  void onProgessUpdate(byte[]... data){
-        Log.println(Log.ASSERT, "action", data.toString());
+    @Override
+    protected void onProgressUpdate(byte[]... data) {
+        Log.d("data","End Data = " + data.toString());
+        tv.setText(data.toString());
     }
+
+
 }
