@@ -1,6 +1,9 @@
 package com.example.projet_iot;
 
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,19 +13,39 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 
 
 public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
     private DatagramSocket UDPSocket;
-    private final String IP = "";
+    //private final String IP = "";
     private final int PORT;
-    private InetAddress address;
-    private TextView tv;
+    private final InetAddress address;
+    private Handler parentHandler;
 
-    ReceiverTask(DatagramSocket socket, int port, TextView tv){
-        this.UDPSocket = socket;
+    ReceiverTask(int port, String address, Handler srcHandler) throws UnknownHostException, SocketException {
+        this.UDPSocket = new DatagramSocket();
         this.PORT = port;
-        this.tv = tv;
+        this.address = InetAddress.getByName(address);
+        this.parentHandler=srcHandler;
+    }
+
+    public void run() {
+        //Looper.prepare();
+
+        try {
+            byte[] reset = "(0)".getBytes();
+            //UDPSocket = new DatagramSocket();
+            //(new ReceiverTask(this.UDPSocket, this.PORT)).execute();
+            UDPSocket.send(new DatagramPacket(reset, reset.length, this.address, this.PORT));
+            Log.d( "action", "reset");
+            doInBackground();
+
+        } catch (IOException e) {
+            Log.d("network", e.toString());
+        }
+
+        //Looper.loop();
     }
 
     @Override
@@ -42,9 +65,9 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
             data = packet.getData();
             Log.d("data","Data = " + data);
             if (data.length>0){
-                tv.setText(data.toString());
-                //System.out.println(data);
-               // Log.d("data","Data = " + data);
+                Message msgToSend = new Message();
+                msgToSend.obj = data.toString();
+                parentHandler.sendMessage(msgToSend);
             }
             publishProgress(java.util.Arrays.copyOf(data, size));
 

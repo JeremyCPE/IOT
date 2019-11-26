@@ -2,6 +2,9 @@
 package com.example.projet_iot;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,17 +23,16 @@ public class Activity2 extends AppCompatActivity {
     private String ip;
     private int port;
     private SenderTask st;
-    private InetAddress ia;
-    private DatagramSocket UDPSocket;
-    private InetAddress address;
+    //private InetAddress ia;
+    //private DatagramSocket UDPSocket;
+    //private InetAddress address;
+    public Handler mHandler;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
         this.ip = getIntent().getStringExtra("IP_ADDR");
         this.port = getIntent().getIntExtra("PORT",8080);
-        //this.ip = "192.168.1.12";
-        //this.port = 10000;
         final Button firstDownButton = findViewById(R.id.firstDownButton);
         final Button secondUpButton = findViewById(R.id.secondUpButton);
         final Button secondDownButton = findViewById(R.id.secondDownButton);
@@ -67,7 +69,26 @@ public class Activity2 extends AppCompatActivity {
             }
         });*/
         st = new SenderTask();
-        try {
+        (new Thread(){
+            public void run(){
+                try {
+                    Looper.prepare();
+                    mHandler = new Handler() {
+                        public void handleMessage(Message msg) {
+                            // process incoming messages here
+                            // this will run in non-ui/background thread
+                            Log.d("deb_network", msg.toString());
+                        }
+                    };
+                    (new ReceiverTask(port,ip,mHandler)).run();
+
+                    Looper.loop();
+                } catch (Exception e){
+                    Log.d("network", e.toString());
+                }
+            }
+            }).start();
+        /*try {
             ia = InetAddress.getByName(this.ip);
 
             (new Thread(){
@@ -75,7 +96,7 @@ public class Activity2 extends AppCompatActivity {
                     try {
                         byte[] reset = "(0)".getBytes();
                         UDPSocket = new DatagramSocket();
-                        (new ReceiverTask(UDPSocket, port,(TextView)findViewById(R.id.firstPrint))).execute();
+                        (new ReceiverTask(UDPSocket, port)).execute();
                         UDPSocket.send(new DatagramPacket(reset, reset.length, ia, port));
                         Log.d( "action", "reset");
 
@@ -86,7 +107,13 @@ public class Activity2 extends AppCompatActivity {
             }).start();
         } catch (UnknownHostException e) {
             e.printStackTrace();
-        }
+        }*/
+    }
+
+    public void onDataReceived(Message msg){
+        Toast msg_usr;
+        msg_usr = Toast.makeText(this.getApplicationContext(),msg.toString(),Toast.LENGTH_SHORT);
+        msg_usr.show();
     }
 
     @Override
@@ -110,13 +137,13 @@ public class Activity2 extends AppCompatActivity {
         TextView tv2 = (TextView) findViewById(R.id.secondText);
         TextView tv3 = (TextView) findViewById(R.id.thirdText);
 
-        //sendData();
+        //sendData(txt1+txt2+txt3);
 
         String txt1 =  tv1.getText().toString().substring(0,1);
         String txt2 =  tv2.getText().toString().substring(0,1);
         String txt3 =  tv3.getText().toString().substring(0,1);
 
-        sendData(txt1+txt2+txt3);
+        sendData("getValues()");
     }
 
     public void sendData(String data) {
