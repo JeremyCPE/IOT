@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,17 +64,6 @@ public class Activity2 extends AppCompatActivity {
             }
         });
 
-        diffuseButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                testEnvoyerVersServeur();
-            }
-        });
-
-        receiveButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-            }
-        });
 
         st = new SenderTask();
 /*        (new Thread(){
@@ -141,7 +129,7 @@ public class Activity2 extends AppCompatActivity {
         secondText.setText(tampon);
     }
 
-    public void testEnvoyerVersServeur(){
+    public void testEnvoyerVersServeur(View view){
         TextView tv1 = (TextView) findViewById(R.id.firstText);
         TextView tv2 = (TextView) findViewById(R.id.secondText);
         TextView tv3 = (TextView) findViewById(R.id.thirdText);
