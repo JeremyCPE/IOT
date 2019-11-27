@@ -3,13 +3,13 @@ package com.example.projet_iot;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 
 public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
@@ -40,18 +40,26 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
             }
             int size = packet.getLength();
             data = packet.getData();
-            Log.d("data","Data = " + data);
-            if (data.length>0){
-                tv.setText(data.toString());
-                //System.out.println(data);
-               // Log.d("data","Data = " + data);
+            String s_data = new String(data, 0, size);
+            try {
+                JSONObject j = new JSONObject(s_data);
+                changeTextViewValue(j);
+            }catch (org.json.JSONException e){
+                System.out.println(e);
             }
+            Log.d("data", s_data);
+
             publishProgress(java.util.Arrays.copyOf(data, size));
 
         }
     }
 
-    protected  void onProgessUpdate(byte[]... data){
-        Log.println(Log.ASSERT, "action", data.toString());
+    protected  void onProgressUpdate(byte[]... data){
+        Log.println(Log.ASSERT, "progress", data.toString());
+    }
+
+    protected void changeTextViewValue(JSONObject jo){
+
+        this.altv.get(0).setText(jo.toString());
     }
 }

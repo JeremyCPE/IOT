@@ -2,6 +2,7 @@
 package com.example.projet_iot;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -64,6 +64,9 @@ public class Activity2 extends AppCompatActivity {
         /*diffuseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+        receiveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
             }
         });*/
         st = new SenderTask();
@@ -71,7 +74,7 @@ public class Activity2 extends AppCompatActivity {
             ia = InetAddress.getByName(this.ip);
 
             (new Thread(){
-                public void run(){
+                public void run() {
                     try {
                         byte[] reset = "(0)".getBytes();
                         UDPSocket = new DatagramSocket();
@@ -82,10 +85,17 @@ public class Activity2 extends AppCompatActivity {
                     } catch (IOException e) {
                         Log.d("network", e.toString());
                     }
+                    while (true) {
+                        sendData("getValues()");
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }).start();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -129,19 +139,20 @@ public class Activity2 extends AppCompatActivity {
 
             try {
                 final int s_port = this.port;//this.getIntent().getIntExtra("PORT",8080);
-                msg_usr = Toast.makeText(this.getApplicationContext(),getIntent().getStringExtra("IP_ADDR")+":"+getIntent().getIntExtra("PORT",8080),Toast.LENGTH_LONG);
-                msg_usr.show();
+               // msg_usr = Toast.makeText(this.getApplicationContext(),getIntent().getStringExtra("IP_ADDR")+":"+getIntent().getIntExtra("PORT",8080),Toast.LENGTH_LONG);
+               // msg_usr.show();
+                Log.println(Log.ASSERT, "sendData", "envoi de "+data);
                 this.st.UDPSend(data,s_ia,s_port);
 
             } catch (Exception e) {
-                msg_usr = Toast.makeText(this.getApplicationContext(),"AAAAH "+e.getMessage(),Toast.LENGTH_LONG);
-                msg_usr.show();
+              //  msg_usr = Toast.makeText(this.getApplicationContext(),"AAAAH "+e.getMessage(),Toast.LENGTH_LONG);
+              // msg_usr.show();
                 e.printStackTrace();
             }
 
         } catch (UnknownHostException e) {
-            msg_usr = Toast.makeText(this.getApplicationContext(),"BBBBBH "+e.getMessage(),Toast.LENGTH_LONG);
-            msg_usr.show();
+           // msg_usr = Toast.makeText(this.getApplicationContext(),"BBBBBH "+e.getMessage(),Toast.LENGTH_LONG);
+           // msg_usr.show();
             e.printStackTrace();
         }
 
