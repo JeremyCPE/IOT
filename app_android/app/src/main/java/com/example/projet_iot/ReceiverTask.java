@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -78,7 +79,16 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
         Log.println(Log.ASSERT, "progress", data.toString());
     }
 
-    protected void changeTextViewValue(JSONObject jo){
-        this.altv.get(0).setText(jo.toString());
+    protected void changeTextViewValue(JSONObject obj) throws JSONException {
+            // get carac from JSON
+        String temp = obj.getString("temperature");
+        String light = obj.getString("light");
+        String hum = obj.getString("humidity");
+            // set in TextView's
+        altv.get(0).setText("Température: "+temp + "°C");
+        altv.get(1).setText("Luminosité: "+light + "Lux");
+        altv.get(2).setText("Humidity:"+hum + "%");
+
+
     }
 }
