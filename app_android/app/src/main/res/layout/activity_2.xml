@@ -7,16 +7,37 @@
     tools:context=".Activity2">
 
     <TextView
-        android:id="@+id/firstPrint"
+        android:id="@+id/printTemp"
         android:layout_width="167dp"
         android:layout_height="36dp"
-        android:layout_marginTop="0dp"
-        android:text="Données recu : "
-        android:textSize="24sp"
+        android:text="Temp : ?°C "
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/firstText" />
+
+    <TextView
+        android:id="@+id/printHumidity"
+        android:layout_width="167dp"
+        android:layout_height="36dp"
+        android:text="Humidité : ?%"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thirdText" />
+
+    <TextView
+        android:id="@+id/printLuminosity"
+        android:layout_width="167dp"
+        android:layout_height="36dp"
+        android:text="Lum : ?Lux "
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondText" />
 
     <TextView
         android:id="@+id/firstText"
@@ -121,5 +142,17 @@
         android:drawableLeft="@android:drawable/ic_menu_share"
         android:drawableStart="@android:drawable/ic_menu_share"
         android:onClick="testEnvoyerVersServeur"/>
+
+    <Button
+        android:id="@+id/receiveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@android:drawable/ic_menu_share"
+        android:drawableLeft="@android:drawable/ic_menu_share"
+        android:onClick="testEnvoyerVersServeur"
+        android:text="Réception"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/diffuseButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
