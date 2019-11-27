@@ -2,8 +2,6 @@
 package com.example.projet_iot;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
@@ -14,30 +12,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.io.IOException;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class Activity2 extends AppCompatActivity {
     private String ip;
     private int port;
     private SenderTask st;
     //private InetAddress ia;
-    //private DatagramSocket UDPSocket;
-    //private InetAddress address;
-    public Handler mHandler;
-
-
-    String JSON_STRING = " {" +
-            "  \"temperature\": ?," +
-            "  \"light\": ?," +
-            "  \"humidity\": ?" +
-            "} ";
-    String temp, light, hum;
-
-
+    private DatagramSocket UDPSocket;
+    private InetAddress address;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +39,10 @@ public class Activity2 extends AppCompatActivity {
         final TextView firstText = findViewById(R.id.firstText);
         final TextView secondText = findViewById(R.id.secondText);
         final TextView thirdText = findViewById(R.id.thirdText);
-
-        final TextView printTemp =  findViewById(R.id.printTemp);
-        final TextView printHumidity =  findViewById(R.id.printHumidity);
-        final TextView printLuminosity =  findViewById(R.id.printLuminosity);
+        final ArrayList<TextView> arrayTextView = new ArrayList<>();
+        arrayTextView.add(firstText);
+        arrayTextView.add(secondText);
+        arrayTextView.add(thirdText);
 
         firstDownButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -78,26 +65,20 @@ public class Activity2 extends AppCompatActivity {
             }
         });
 
+        diffuseButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                testEnvoyerVersServeur();
+            }
+        });
 
-        //TODO : DEPLACER LE JSON DANS LE onDataReceived(Message msg) (si elle marche)
-        try {
-            // get JSONObject from JSON file
-            JSONObject obj = new JSONObject(JSON_STRING);
-            // get carac from JSON
-            temp = obj.getString("temperature");
-            light = obj.getString("light");
-            hum = obj.getString("humidity");
-            // set in TextView's
-            printTemp.setText("Temp.: "+temp + "°C");
-            printLuminosity.setText("Lum.: "+light + "Lux");
-            printHumidity.setText("Hum.:"+hum + "%");
+        receiveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            }
+        });
 
         st = new SenderTask();
-        (new Thread(){
+/*        (new Thread(){
             public void run(){
                 try {
                     Looper.prepare();
@@ -108,35 +89,35 @@ public class Activity2 extends AppCompatActivity {
                             Log.d("deb_network", msg.toString());
                         }
                     };
-                    (new ReceiverTask(port,ip,mHandler)).run();
+                    (new ReceiverTask(port,ip)).run();
 
                     Looper.loop();
                 } catch (Exception e){
                     Log.d("network", e.toString());
                 }
             }
-            }).start();
-        /*try {
-            ia = InetAddress.getByName(this.ip);
+            }).start();*/
+            //ia = InetAddress.getByName(this.ip);
 
             (new Thread(){
-                public void run(){
+                public void run() {
                     try {
-                        byte[] reset = "(0)".getBytes();
-                        UDPSocket = new DatagramSocket();
-                        (new ReceiverTask(UDPSocket, port)).execute();
-                        UDPSocket.send(new DatagramPacket(reset, reset.length, ia, port));
-                        Log.d( "action", "reset");
-
+                        (new ReceiverTask(7070, arrayTextView)).execute();
                     } catch (IOException e) {
                         Log.d("network", e.toString());
                     }
+                    while (true) {
+                        sendData("getValues()");
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }).start();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }*/
-    }
+        }
+
 
     public void onDataReceived(Message msg){
         Toast msg_usr;
@@ -160,7 +141,7 @@ public class Activity2 extends AppCompatActivity {
         secondText.setText(tampon);
     }
 
-    public void testEnvoyerVersServeur(View view){
+    public void testEnvoyerVersServeur(){
         TextView tv1 = (TextView) findViewById(R.id.firstText);
         TextView tv2 = (TextView) findViewById(R.id.secondText);
         TextView tv3 = (TextView) findViewById(R.id.thirdText);
@@ -184,19 +165,20 @@ public class Activity2 extends AppCompatActivity {
 
             try {
                 final int s_port = this.port;//this.getIntent().getIntExtra("PORT",8080);
-                msg_usr = Toast.makeText(this.getApplicationContext(),getIntent().getStringExtra("IP_ADDR")+":"+getIntent().getIntExtra("PORT",8080),Toast.LENGTH_LONG);
-                msg_usr.show();
+               // msg_usr = Toast.makeText(this.getApplicationContext(),getIntent().getStringExtra("IP_ADDR")+":"+getIntent().getIntExtra("PORT",8080),Toast.LENGTH_LONG);
+               // msg_usr.show();
+                Log.println(Log.ASSERT, "sendData", "envoi de "+data);
                 this.st.UDPSend(data,s_ia,s_port);
 
             } catch (Exception e) {
-                msg_usr = Toast.makeText(this.getApplicationContext(),"AAAAH "+e.getMessage(),Toast.LENGTH_LONG);
-                msg_usr.show();
+              //  msg_usr = Toast.makeText(this.getApplicationContext(),"AAAAH "+e.getMessage(),Toast.LENGTH_LONG);
+              // msg_usr.show();
                 e.printStackTrace();
             }
 
         } catch (UnknownHostException e) {
-            msg_usr = Toast.makeText(this.getApplicationContext(),"BBBBBH "+e.getMessage(),Toast.LENGTH_LONG);
-            msg_usr.show();
+           // msg_usr = Toast.makeText(this.getApplicationContext(),"BBBBBH "+e.getMessage(),Toast.LENGTH_LONG);
+           // msg_usr.show();
             e.printStackTrace();
         }
 

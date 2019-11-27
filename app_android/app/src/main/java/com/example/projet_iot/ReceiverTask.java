@@ -1,33 +1,33 @@
 package com.example.projet_iot;
 
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
+import android.widget.TextView;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 
 public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
     private DatagramSocket UDPSocket;
     //private final String IP = "";
     private final int PORT;
-    private final InetAddress address;
-    private Handler parentHandler;
+    private ArrayList<TextView> altv;
 
-    ReceiverTask(int port, String address, Handler srcHandler) throws UnknownHostException, SocketException {
-        this.UDPSocket = new DatagramSocket();
+
+    ReceiverTask(int port, ArrayList<TextView> altv) throws UnknownHostException, SocketException {
+        this.UDPSocket = new DatagramSocket(port);
         this.PORT = port;
-        this.address = InetAddress.getByName(address);
-        this.parentHandler=srcHandler;
+        this.altv = altv;
     }
 
-    public void run() {
+/*    public void run() {
         //Looper.prepare();
 
         try {
@@ -43,41 +43,42 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
         }
 
         //Looper.loop();
-    }
+    }*/
 
     @Override
     protected Void doInBackground(Void... rien) {
+        byte[] data = new byte [1024];
         while(true){
-            byte[] data = new byte [256];
+
             Log.d("action","LaunchDoInBackground");
             DatagramPacket packet = new DatagramPacket(data, data.length);
-            Log.d("action","LaunchDoInBackground2 " + data.length);
             try {
                 UDPSocket.receive(packet);
-
             } catch (IOException e) {
-                Log.d("error", "Error UDPSocket" + e.toString());
+                Log.d("error",e.toString());
                 e.printStackTrace();
             }
             int size = packet.getLength();
-            Log.d("data","Longueur du paquet : " + size);
             data = packet.getData();
-
-            if (data.length>0){
-                Message msgToSend = new Message();
-                msgToSend.obj = data.toString();
-                parentHandler.sendMessage(msgToSend);
+            String s_data = new String(data, 0, size);
+            try {
+                JSONObject j = new JSONObject(s_data);
+                changeTextViewValue(j);
+            }catch (org.json.JSONException e){
+                System.out.println(e);
             }
+            Log.d("data", s_data);
+
             publishProgress(java.util.Arrays.copyOf(data, size));
 
         }
-
     }
 
-    @Override
-    protected void onProgressUpdate(byte[]... data) {
-        Log.d("data","End Data = " + data.toString());
+    protected  void onProgressUpdate(byte[]... data){
+        Log.println(Log.ASSERT, "progress", data.toString());
     }
 
-
+    protected void changeTextViewValue(JSONObject jo){
+        this.altv.get(0).setText(jo.toString());
+    }
 }
