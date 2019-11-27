@@ -1,25 +1,17 @@
 package com.example.projet_iot;
 
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.widget.TextView;
 
 import org.json.JSONObject;
 
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class ReceiverTask extends AsyncTask<Void, byte[], Void> {

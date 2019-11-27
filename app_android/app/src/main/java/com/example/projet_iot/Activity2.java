@@ -2,8 +2,6 @@
 package com.example.projet_iot;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +12,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -70,7 +67,7 @@ public class Activity2 extends AppCompatActivity {
 
         diffuseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendData("HLT");
+                testEnvoyerVersServeur();
             }
         });
 
@@ -144,17 +141,17 @@ public class Activity2 extends AppCompatActivity {
         secondText.setText(tampon);
     }
 
-    public void testEnvoyerVersServeur(View view){
+    public void testEnvoyerVersServeur(){
         TextView tv1 = (TextView) findViewById(R.id.firstText);
         TextView tv2 = (TextView) findViewById(R.id.secondText);
         TextView tv3 = (TextView) findViewById(R.id.thirdText);
 
-        //sendData(txt1+txt2+txt3);
+
 
         String txt1 =  tv1.getText().toString().substring(0,1);
         String txt2 =  tv2.getText().toString().substring(0,1);
         String txt3 =  tv3.getText().toString().substring(0,1);
-
+        sendData(txt1+txt2+txt3);
         //sendData("getValues()");
     }
 
