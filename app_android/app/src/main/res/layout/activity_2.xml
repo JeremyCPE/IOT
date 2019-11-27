@@ -1,146 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context=".Activity2">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10"
+    android:orientation="vertical"
+    tools:context=".Activity2"
+    android:background="#d7f4f7">
 
-    <TextView
-        android:id="@+id/printTemp"
-        android:layout_width="167dp"
-        android:layout_height="36dp"
-        android:text="Temp : ?°C "
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstText" />
-
-    <TextView
-        android:id="@+id/printHumidity"
-        android:layout_width="167dp"
-        android:layout_height="36dp"
-        android:text="Humidité : ?%"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thirdText" />
-
-    <TextView
-        android:id="@+id/printLuminosity"
-        android:layout_width="167dp"
-        android:layout_height="36dp"
-        android:text="Lum : ?Lux "
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondText" />
-
-    <TextView
-        android:id="@+id/firstText"
-        android:layout_width="167dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="140dp"
-        android:text="Température"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/secondText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/thirdText"
-        android:layout_width="167dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="116dp"
-        android:text="Humidité"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/secondText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondText"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <Button
-        android:id="@+id/thirdUpButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:drawableTop="@android:drawable/arrow_up_float"
-        android:text="UP"
-        app:layout_constraintBottom_toBottomOf="@+id/thirdText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/thirdText"
-        app:layout_constraintTop_toTopOf="@+id/thirdText"
-        app:layout_constraintVertical_bias="0.785" />
+        android:layout_weight="4"
+        android:weightSum="4"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Informations reçues du serveur, en provenance de votre objet connecté"
+            android:textSize="24dp"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/printTemp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Température: Aucune donnée reçue"
+            android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/secondText"
-        android:layout_width="167dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="124dp"
-        android:text="Luminosité"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstText" />
+        <TextView
+            android:id="@+id/printHumidity"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Humidité: Aucune donnée reçue"
+            android:textSize="18dp"/>
 
-    <Button
-        android:id="@+id/secondDownButton"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/printLuminosity"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Luminosité: Aucune donnée reçue"
+            android:textSize="18dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
-        android:layout_marginBottom="76dp"
-        android:drawableBottom="@android:drawable/arrow_down_float"
-        android:text="DOWN"
-        app:layout_constraintBottom_toTopOf="@+id/thirdUpButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/secondText" />
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Modifiez l'ordre d'affichage de l'écran de votre objet connecté"
+            android:textSize="24dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/secondUpButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
-        android:drawableTop="@android:drawable/arrow_up_float"
-        android:text="UP"
-        app:layout_constraintBottom_toTopOf="@+id/secondDownButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/secondText"
-        app:layout_constraintTop_toBottomOf="@+id/firstDownButton"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/firstDownButton"
-        android:layout_width="wrap_content"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:weightSum="3">
+        <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:drawableBottom="@android:drawable/arrow_down_float"
-        android:text="DOWN"
-        app:layout_constraintBottom_toBottomOf="@+id/firstText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
-        app:layout_constraintStart_toEndOf="@+id/firstText"
-        app:layout_constraintTop_toTopOf="@+id/firstText"
-        app:layout_constraintVertical_bias="0.968" />
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:background="#bef4fa">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:weightSum="2"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/firstText"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Température"
+                    android:textSize="24dp"/>
+            </LinearLayout>
+            <ImageButton
+                android:id="@+id/firstDownButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/arrow_down"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:background="#96f5ff">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:weightSum="2"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/secondText"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="Humidité"
+                    android:textSize="24dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/secondUpButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/arrow_up"
+                    android:background="@android:color/transparent"/>
+                <ImageButton
+                    android:id="@+id/secondDownButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/arrow_down"
+                    android:background="@android:color/transparent"/>
 
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:background="@android:color/holo_blue_light">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:weightSum="2"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/thirdText"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="Luminosité"
+                    android:textSize="24dp"/>
+            </LinearLayout>
+            <ImageButton
+                android:id="@+id/thirdUpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/arrow_up"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+    </LinearLayout>
     <Button
         android:id="@+id/diffuseButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="Envoyer les données"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:color/transparent"
         android:drawableLeft="@android:drawable/ic_menu_share"
-        android:drawableStart="@android:drawable/ic_menu_share"
+        android:padding="24dp"
         android:onClick="testEnvoyerVersServeur"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

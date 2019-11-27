@@ -8,6 +8,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,10 +44,10 @@ public class Activity2 extends AppCompatActivity {
         setContentView(R.layout.activity_2);
         this.ip = getIntent().getStringExtra("IP_ADDR");
         this.port = getIntent().getIntExtra("PORT",8080);
-        final Button firstDownButton = findViewById(R.id.firstDownButton);
-        final Button secondUpButton = findViewById(R.id.secondUpButton);
-        final Button secondDownButton = findViewById(R.id.secondDownButton);
-        final Button thirdUpButton = findViewById(R.id.thirdUpButton);
+        final ImageButton firstDownButton = findViewById(R.id.firstDownButton);
+        final ImageButton secondUpButton = findViewById(R.id.secondUpButton);
+        final ImageButton secondDownButton = findViewById(R.id.secondDownButton);
+        final ImageButton thirdUpButton = findViewById(R.id.thirdUpButton);
 
         final TextView firstText = findViewById(R.id.firstText);
         final TextView secondText = findViewById(R.id.secondText);
