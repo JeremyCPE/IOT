@@ -4,12 +4,12 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
+import java.net.InetAddress;
 
 
 public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
@@ -60,6 +60,6 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
 
     protected void changeTextViewValue(JSONObject jo){
 
-        this.altv.get(0).setText(jo.toString());
+        this.tv.setText(jo.toString());
     }
 }

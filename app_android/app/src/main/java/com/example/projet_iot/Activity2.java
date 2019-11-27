@@ -2,7 +2,6 @@
 package com.example.projet_iot;
 
 import android.os.Bundle;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -96,6 +96,8 @@ public class Activity2 extends AppCompatActivity {
                 }
             }).start();
 
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
         }
     }
 
