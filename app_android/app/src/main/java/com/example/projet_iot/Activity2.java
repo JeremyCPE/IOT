@@ -39,12 +39,10 @@ public class Activity2 extends AppCompatActivity {
         final Button thirdUpButton = findViewById(R.id.thirdUpButton);
         final Button diffuseButton = findViewById(R.id.diffuseButton);
         final Button receiveButton = findViewById(R.id.receiveButton);
-        final TextView firstPrint = findViewById(R.id.firstPrint);
         final TextView firstText = findViewById(R.id.firstText);
         final TextView secondText = findViewById(R.id.secondText);
         final TextView thirdText = findViewById(R.id.thirdText);
         final ArrayList<TextView> arrayTextView = new ArrayList<>();
-        arrayTextView.add(firstPrint);
         arrayTextView.add(firstText);
         arrayTextView.add(secondText);
         arrayTextView.add(thirdText);
