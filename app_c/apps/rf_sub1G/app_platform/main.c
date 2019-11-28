@@ -42,7 +42,7 @@
 #error Either RF_868MHz or RF_915MHz MUST be defined.
 #endif
 
-#define DEBUG 1
+#define DEBUG 0
 #define BUFF_LEN 60
 #define RF_BUFF_LEN  64
 
@@ -145,6 +145,7 @@ void rf_config(void)
 #endif
 }
 
+uint8_t chenillard_active = 1;
 
 void handle_rf_rx_data(void)
 {
@@ -158,14 +159,46 @@ void handle_rf_rx_data(void)
 	cc1101_enter_rx_mode();
 	message msg_data;
 	memcpy(&msg_data,&data[2],sizeof(message));
-
+	msg_data.temp=msg_data.temp-11;
+	msg_data.hum=msg_data.hum-22;
+	msg_data.lum=msg_data.lum-33;
 	/* JSON PRINT*/
 	uprintf(UART0, "{ \"Lux\": %d, \"Temp\": %d.%02d, \"Humidity\": %d.%d}\n\r",  
 					msg_data.lum,
 					msg_data.temp / 10,  (msg_data.temp > 0) ? (msg_data.temp % 10) : ((-msg_data.temp) % 10),
 					msg_data.hum / 10, msg_data.hum % 10);
-    /*uprintf(UART0, "RF: message: %c.\n\r", data[2]);*/
+}
 
+static volatile uint32_t cc_tx = 0;
+static volatile uint8_t cc_tx_buff[RF_BUFF_LEN];
+static volatile uint8_t cc_ptr = 0;
+
+void handle_uart_cmd(uint8_t c)
+{
+	if (cc_ptr < RF_BUFF_LEN) {
+		cc_tx_buff[cc_ptr++] = c;
+	} else {
+		cc_ptr = 0;
+	}
+	if ((c == '\n') || (c == '\r')) {
+		cc_tx = 1;
+	}
+	uprintf(UART0, "%c", (uint8_t)cc_tx_buff[0]); //Provoque l'erreur -> Surcharge de l'UART 
+}
+
+void send_on_rf(void)
+{
+	uint8_t tx_len = cc_ptr;
+	uint8_t cc_tx_data[tx_len+2];	
+	memcpy((char *)&cc_tx_data[2], (char *)cc_tx_buff, tx_len); //Envoi du buffer provenant de l'UART
+	//memcpy(&cc_tx_data[2], "HTL", sizeof("HTL")); //Envoi de HTL en brut ***
+	cc_ptr = 0;
+	cc_tx_data[0]=sizeof(RF_BUFF_LEN)+1;
+	cc_tx_data[1]=NEIGHBOR_ADDRESS;
+	if (cc1101_tx_fifo_state() != 0) {
+		cc1101_flush_tx_fifo();
+	}
+	cc1101_send_packet(cc_tx_data, tx_len+2);
 }
 
 
@@ -173,11 +206,12 @@ void handle_rf_rx_data(void)
 int main(void)
 {
 	system_init();
-	uart_on(UART0, 115200, NULL);
+	uart_on(UART0, 115200, handle_uart_cmd); //Mise en place de la fonction de retour lors de la réception sur l'UART
 	//i2c_on(I2C0, I2C_CLK_100KHz, I2C_MASTER);
 	ssp_master_on(0, LPC_SSP_FRAME_SPI, 8, 4*1000*1000); /* bus_num, frame_type, data_width, rate */
+	//adc_on(NULL);
 	status_led_config(&status_led_green, &status_led_red);
-	
+
 	
 	/* Radio */
 	rf_config();
@@ -187,10 +221,18 @@ int main(void)
 
 	while (1) {
 		uint8_t status = 0;
-
-		
-		/* Tell we are alive :) */
 		chenillard(250);
+		if (cc_tx == 1) {
+			if(cc_ptr == 3){ //Taille des données reçu du raspberry désiré sur l'UART
+				handle_uart_cmd('\n'); //Envoi de \n pour arreter la lecture sur UART
+				cc_ptr = 0; //Préparation pour la prochaine lecture
+			}
+		}
+		if (cc_tx == 1) {
+			uprintf(UART0, "Transmission ready to send.\n\r");
+			send_on_rf();
+			cc_tx = 0;
+		}
 
 		/* Do not leave radio in an unknown or unwated state */
 		do {
@@ -209,12 +251,14 @@ int main(void)
 			}
 		}
 		if (check_rx == 1) {
+			//uprintf(UART0, "We are ready to receive.\n\r");
 			check_rx = 0;
 			handle_rf_rx_data();
 		}
 
-		
 	}
+		
+	
 	return 0;
 }
 

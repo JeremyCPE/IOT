@@ -386,26 +386,6 @@ Discarded input sections
  .comment       0x0000000000000000       0x2c objs/extdrv/veml6070_uv_sensor.o
  .ARM.attributes
                 0x0000000000000000       0x31 objs/extdrv/veml6070_uv_sensor.o
- .text          0x0000000000000000        0x0 objs/extdrv/bme280_humidity_sensor.o
- .data          0x0000000000000000        0x0 objs/extdrv/bme280_humidity_sensor.o
- .bss           0x0000000000000000        0x0 objs/extdrv/bme280_humidity_sensor.o
- .text.bme280_probe_sensor
-                0x0000000000000000       0x60 objs/extdrv/bme280_humidity_sensor.o
- .text.bme280_get_calibration_data
-                0x0000000000000000      0x114 objs/extdrv/bme280_humidity_sensor.o
- .text.bme280_configure
-                0x0000000000000000       0x84 objs/extdrv/bme280_humidity_sensor.o
- .text.bme280_sensor_read
-                0x0000000000000000       0xc0 objs/extdrv/bme280_humidity_sensor.o
- .text.bme280_compensate_temperature
-                0x0000000000000000       0x30 objs/extdrv/bme280_humidity_sensor.o
- .text.bme280_compensate_pressure
-                0x0000000000000000       0xa8 objs/extdrv/bme280_humidity_sensor.o
- .text.bme280_compensate_humidity
-                0x0000000000000000       0xa8 objs/extdrv/bme280_humidity_sensor.o
- .comment       0x0000000000000000       0x2c objs/extdrv/bme280_humidity_sensor.o
- .ARM.attributes
-                0x0000000000000000       0x31 objs/extdrv/bme280_humidity_sensor.o
  .text          0x0000000000000000        0x0 objs/extdrv/dht11.o
  .data          0x0000000000000000        0x0 objs/extdrv/dht11.o
  .bss           0x0000000000000000        0x0 objs/extdrv/dht11.o
@@ -452,6 +432,46 @@ Discarded input sections
  .comment       0x0000000000000000       0x2c objs/extdrv/tmp101_temp_sensor.o
  .ARM.attributes
                 0x0000000000000000       0x31 objs/extdrv/tmp101_temp_sensor.o
+ .text          0x0000000000000000        0x0 objs/extdrv/ssd130x_oled_driver.o
+ .data          0x0000000000000000        0x0 objs/extdrv/ssd130x_oled_driver.o
+ .bss           0x0000000000000000        0x0 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_send_command
+                0x0000000000000000       0xdc objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_set_mem_addressing_mode
+                0x0000000000000000       0x18 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_set_column_address
+                0x0000000000000000       0x18 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_set_page_address
+                0x0000000000000000       0x18 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_set_contrast
+                0x0000000000000000       0x10 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_set_display_on
+                0x0000000000000000       0x1c objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_display_video_reverse
+                0x0000000000000000       0x20 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_display_power
+                0x0000000000000000       0x1c objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_set_scan_direction
+                0x0000000000000000       0x20 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_set_read_direction
+                0x0000000000000000       0x20 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_set_display_offset
+                0x0000000000000000       0x34 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_display_off
+                0x0000000000000000       0x10 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_display_on
+                0x0000000000000000      0x14c objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_send_data
+                0x0000000000000000       0xc4 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_display_full_screen
+                0x0000000000000000       0x98 objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_update_tile
+                0x0000000000000000       0x5c objs/extdrv/ssd130x_oled_driver.o
+ .text.ssd130x_update_modified
+                0x0000000000000000        0x4 objs/extdrv/ssd130x_oled_driver.o
+ .comment       0x0000000000000000       0x2c objs/extdrv/ssd130x_oled_driver.o
+ .ARM.attributes
+                0x0000000000000000       0x31 objs/extdrv/ssd130x_oled_driver.o
  .text          0x0000000000000000        0x0 objs/extdrv/epaper.o
  .data          0x0000000000000000        0x0 objs/extdrv/epaper.o
  .bss           0x0000000000000000        0x0 objs/extdrv/epaper.o
@@ -511,10 +531,6 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 objs/extdrv/cc1101.o
  .text.cc1101_reset
                 0x0000000000000000       0x10 objs/extdrv/cc1101.o
- .text.cc1101_flush_tx_fifo
-                0x0000000000000000       0x1c objs/extdrv/cc1101.o
- .text.cc1101_enter_tx_mode
-                0x0000000000000000       0x64 objs/extdrv/cc1101.o
  .text.cc1101_read_pkt_status
                 0x0000000000000000       0x10 objs/extdrv/cc1101.o
  .text.cc1101_enter_fstxon_state
@@ -525,10 +541,6 @@ Discarded input sections
                 0x0000000000000000       0x10 objs/extdrv/cc1101.o
  .text.cc1101_send_calibration_request
                 0x0000000000000000       0x10 objs/extdrv/cc1101.o
- .text.cc1101_tx_fifo_state
-                0x0000000000000000       0x34 objs/extdrv/cc1101.o
- .text.cc1101_send_packet
-                0x0000000000000000       0x28 objs/extdrv/cc1101.o
  .text.cc1101_set_channel
                 0x0000000000000000       0x28 objs/extdrv/cc1101.o
  .text.cc1101_power_down
@@ -537,46 +549,26 @@ Discarded input sections
                 0x0000000000000000       0x28 objs/extdrv/cc1101.o
  .text.cc1101_set_patable
                 0x0000000000000000       0x18 objs/extdrv/cc1101.o
- .text          0x0000000000000000        0x0 objs/extdrv/ssd130x_oled_driver.o
- .data          0x0000000000000000        0x0 objs/extdrv/ssd130x_oled_driver.o
- .bss           0x0000000000000000        0x0 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_send_command
-                0x0000000000000000       0xdc objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_set_mem_addressing_mode
-                0x0000000000000000       0x18 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_set_column_address
-                0x0000000000000000       0x18 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_set_page_address
-                0x0000000000000000       0x18 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_set_contrast
-                0x0000000000000000       0x10 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_set_display_on
-                0x0000000000000000       0x1c objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_display_video_reverse
-                0x0000000000000000       0x20 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_display_power
-                0x0000000000000000       0x1c objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_set_scan_direction
-                0x0000000000000000       0x20 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_set_read_direction
-                0x0000000000000000       0x20 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_set_display_offset
-                0x0000000000000000       0x34 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_display_off
-                0x0000000000000000       0x10 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_display_on
-                0x0000000000000000      0x14c objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_send_data
-                0x0000000000000000       0xc4 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_display_full_screen
-                0x0000000000000000       0x98 objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_update_tile
-                0x0000000000000000       0x5c objs/extdrv/ssd130x_oled_driver.o
- .text.ssd130x_update_modified
-                0x0000000000000000        0x4 objs/extdrv/ssd130x_oled_driver.o
- .comment       0x0000000000000000       0x2c objs/extdrv/ssd130x_oled_driver.o
+ .text          0x0000000000000000        0x0 objs/extdrv/bme280_humidity_sensor.o
+ .data          0x0000000000000000        0x0 objs/extdrv/bme280_humidity_sensor.o
+ .bss           0x0000000000000000        0x0 objs/extdrv/bme280_humidity_sensor.o
+ .text.bme280_probe_sensor
+                0x0000000000000000       0x60 objs/extdrv/bme280_humidity_sensor.o
+ .text.bme280_get_calibration_data
+                0x0000000000000000      0x114 objs/extdrv/bme280_humidity_sensor.o
+ .text.bme280_configure
+                0x0000000000000000       0x84 objs/extdrv/bme280_humidity_sensor.o
+ .text.bme280_sensor_read
+                0x0000000000000000       0xc0 objs/extdrv/bme280_humidity_sensor.o
+ .text.bme280_compensate_temperature
+                0x0000000000000000       0x30 objs/extdrv/bme280_humidity_sensor.o
+ .text.bme280_compensate_pressure
+                0x0000000000000000       0xa8 objs/extdrv/bme280_humidity_sensor.o
+ .text.bme280_compensate_humidity
+                0x0000000000000000       0xa8 objs/extdrv/bme280_humidity_sensor.o
+ .comment       0x0000000000000000       0x2c objs/extdrv/bme280_humidity_sensor.o
  .ARM.attributes
-                0x0000000000000000       0x31 objs/extdrv/ssd130x_oled_driver.o
+                0x0000000000000000       0x31 objs/extdrv/bme280_humidity_sensor.o
  .text          0x0000000000000000        0x0 objs/drivers/ssp.o
  .data          0x0000000000000000        0x0 objs/drivers/ssp.o
  .bss           0x0000000000000000        0x0 objs/drivers/ssp.o
@@ -856,9 +848,11 @@ Discarded input sections
  .text          0x0000000000000000        0x0 objs/apps/rf_sub1G/app_platform/main.o
  .data          0x0000000000000000        0x0 objs/apps/rf_sub1G/app_platform/main.o
  .bss           0x0000000000000000        0x0 objs/apps/rf_sub1G/app_platform/main.o
- .rodata.cc1101_gdo2
-                0x0000000000000000        0x3 objs/apps/rf_sub1G/app_platform/main.o
  .rodata.button
+                0x0000000000000000        0x3 objs/apps/rf_sub1G/app_platform/main.o
+ .data.chenillard_active
+                0x0000000000000000        0x1 objs/apps/rf_sub1G/app_platform/main.o
+ .rodata.cc1101_gdo2
                 0x0000000000000000        0x3 objs/apps/rf_sub1G/app_platform/main.o
 
 Memory Configuration
@@ -892,14 +886,14 @@ LOAD objs/extdrv/rtc_pcf85363a.o
 LOAD objs/extdrv/lcd_char.o
 LOAD objs/extdrv/tsl256x_light_sensor.o
 LOAD objs/extdrv/veml6070_uv_sensor.o
-LOAD objs/extdrv/bme280_humidity_sensor.o
 LOAD objs/extdrv/dht11.o
 LOAD objs/extdrv/eeprom.o
 LOAD objs/extdrv/tmp101_temp_sensor.o
+LOAD objs/extdrv/ssd130x_oled_driver.o
 LOAD objs/extdrv/epaper.o
 LOAD objs/extdrv/ws2812.o
 LOAD objs/extdrv/cc1101.o
-LOAD objs/extdrv/ssd130x_oled_driver.o
+LOAD objs/extdrv/bme280_humidity_sensor.o
 LOAD objs/drivers/ssp.o
 LOAD objs/drivers/gpio.o
 LOAD objs/drivers/serial.o
@@ -923,7 +917,7 @@ LOAD objs/apps/rf_sub1G/app_platform/main.o
                 0x0000000010000fe0                _end_stack = ((_sram_base + _sram_size) - 0x20)
                 0x0000000000000000                . = ORIGIN (flash)
 
-.text           0x0000000000000000     0x1ef8
+.text           0x0000000000000000     0x2110
  FILL mask 0xff
  *(SORT(.vectors))
  .vectors       0x0000000000000000       0xc0 objs/core/bootstrap.o
@@ -1019,221 +1013,238 @@ LOAD objs/apps/rf_sub1G/app_platform/main.o
  .text.cc1101_spi_transfer
                 0x00000000000008b8       0x6c objs/extdrv/cc1101.o
                 0x00000000000008b8                cc1101_spi_transfer
- .text.cc1101_flush_rx_fifo
+ .text.cc1101_flush_tx_fifo
                 0x0000000000000924       0x1c objs/extdrv/cc1101.o
-                0x0000000000000924                cc1101_flush_rx_fifo
+                0x0000000000000924                cc1101_flush_tx_fifo
+ .text.cc1101_flush_rx_fifo
+                0x0000000000000940       0x1c objs/extdrv/cc1101.o
+                0x0000000000000940                cc1101_flush_rx_fifo
+ .text.cc1101_enter_tx_mode
+                0x000000000000095c       0x64 objs/extdrv/cc1101.o
  .text.cc1101_read_status
-                0x0000000000000940       0x10 objs/extdrv/cc1101.o
-                0x0000000000000940                cc1101_read_status
+                0x00000000000009c0       0x10 objs/extdrv/cc1101.o
+                0x00000000000009c0                cc1101_read_status
  .text.cc1101_enter_rx_mode
-                0x0000000000000950       0x38 objs/extdrv/cc1101.o
-                0x0000000000000950                cc1101_enter_rx_mode
+                0x00000000000009d0       0x38 objs/extdrv/cc1101.o
+                0x00000000000009d0                cc1101_enter_rx_mode
  .text.cc1101_rx_fifo_state
-                0x0000000000000988       0x3c objs/extdrv/cc1101.o
-                0x0000000000000988                cc1101_rx_fifo_state
+                0x0000000000000a08       0x3c objs/extdrv/cc1101.o
+                0x0000000000000a08                cc1101_rx_fifo_state
+ .text.cc1101_tx_fifo_state
+                0x0000000000000a44       0x34 objs/extdrv/cc1101.o
+                0x0000000000000a44                cc1101_tx_fifo_state
+ .text.cc1101_send_packet
+                0x0000000000000a78       0x28 objs/extdrv/cc1101.o
+                0x0000000000000a78                cc1101_send_packet
  .text.cc1101_receive_packet
-                0x00000000000009c4       0xcc objs/extdrv/cc1101.o
-                0x00000000000009c4                cc1101_receive_packet
+                0x0000000000000aa0       0xcc objs/extdrv/cc1101.o
+                0x0000000000000aa0                cc1101_receive_packet
  .text.cc1101_set_address
-                0x0000000000000a90       0x28 objs/extdrv/cc1101.o
-                0x0000000000000a90                cc1101_set_address
+                0x0000000000000b6c       0x28 objs/extdrv/cc1101.o
+                0x0000000000000b6c                cc1101_set_address
  .text.cc1101_init
-                0x0000000000000ab8       0x4c objs/extdrv/cc1101.o
-                0x0000000000000ab8                cc1101_init
+                0x0000000000000b94       0x4c objs/extdrv/cc1101.o
+                0x0000000000000b94                cc1101_init
  .text.cc1101_config
-                0x0000000000000b04       0x50 objs/extdrv/cc1101.o
-                0x0000000000000b04                cc1101_config
+                0x0000000000000be0       0x50 objs/extdrv/cc1101.o
+                0x0000000000000be0                cc1101_config
  .text.cc1101_update_config
-                0x0000000000000b54       0x48 objs/extdrv/cc1101.o
-                0x0000000000000b54                cc1101_update_config
+                0x0000000000000c30       0x48 objs/extdrv/cc1101.o
+                0x0000000000000c30                cc1101_update_config
  .text.SSP_0_Handler
-                0x0000000000000b9c       0x2c objs/drivers/ssp.o
-                0x0000000000000b9c                SSP_0_Handler
+                0x0000000000000c78       0x2c objs/drivers/ssp.o
+                0x0000000000000c78                SSP_0_Handler
  .text.spi_transfer_single_frame
-                0x0000000000000bc8       0x20 objs/drivers/ssp.o
-                0x0000000000000bc8                spi_transfer_single_frame
+                0x0000000000000ca4       0x20 objs/drivers/ssp.o
+                0x0000000000000ca4                spi_transfer_single_frame
  .text.spi_transfer_multiple_frames
-                0x0000000000000be8       0xf0 objs/drivers/ssp.o
-                0x0000000000000be8                spi_transfer_multiple_frames
+                0x0000000000000cc4       0xf0 objs/drivers/ssp.o
+                0x0000000000000cc4                spi_transfer_multiple_frames
  .text.ssp_clk_on
-                0x0000000000000cd8       0x78 objs/drivers/ssp.o
-                0x0000000000000cd8                ssp_clk_on
+                0x0000000000000db4       0x78 objs/drivers/ssp.o
+                0x0000000000000db4                ssp_clk_on
  .text.ssp_clk_update
-                0x0000000000000d50       0x18 objs/drivers/ssp.o
-                0x0000000000000d50                ssp_clk_update
+                0x0000000000000e2c       0x18 objs/drivers/ssp.o
+                0x0000000000000e2c                ssp_clk_update
  .text.ssp_master_on
-                0x0000000000000d68       0x88 objs/drivers/ssp.o
-                0x0000000000000d68                ssp_master_on
- .text.gpio_on  0x0000000000000df0       0x18 objs/drivers/gpio.o
-                0x0000000000000df0                gpio_on
+                0x0000000000000e44       0x88 objs/drivers/ssp.o
+                0x0000000000000e44                ssp_master_on
+ .text.gpio_on  0x0000000000000ecc       0x18 objs/drivers/gpio.o
+                0x0000000000000ecc                gpio_on
  .text.config_gpio
-                0x0000000000000e08       0x4c objs/drivers/gpio.o
-                0x0000000000000e08                config_gpio
+                0x0000000000000ee4       0x4c objs/drivers/gpio.o
+                0x0000000000000ee4                config_gpio
  .text.set_gpio_callback
-                0x0000000000000e54      0x118 objs/drivers/gpio.o
-                0x0000000000000e54                set_gpio_callback
+                0x0000000000000f30      0x118 objs/drivers/gpio.o
+                0x0000000000000f30                set_gpio_callback
  .text.PIO_0_Handler
-                0x0000000000000f6c       0x48 objs/drivers/gpio.o
-                0x0000000000000f6c                PIO_0_Handler
+                0x0000000000001048       0x48 objs/drivers/gpio.o
+                0x0000000000001048                PIO_0_Handler
  .text.PIO_1_Handler
-                0x0000000000000fb4       0x48 objs/drivers/gpio.o
-                0x0000000000000fb4                PIO_1_Handler
+                0x0000000000001090       0x48 objs/drivers/gpio.o
+                0x0000000000001090                PIO_1_Handler
  .text.PIO_2_Handler
-                0x0000000000000ffc       0x48 objs/drivers/gpio.o
-                0x0000000000000ffc                PIO_2_Handler
+                0x00000000000010d8       0x48 objs/drivers/gpio.o
+                0x00000000000010d8                PIO_2_Handler
  .text.uart_clk_on
-                0x0000000000001044       0xa8 objs/drivers/serial.o
+                0x0000000000001120       0xa8 objs/drivers/serial.o
  .text.uart_check_tx
-                0x00000000000010ec       0x38 objs/drivers/serial.o
+                0x00000000000011c8       0x38 objs/drivers/serial.o
  .text.UART_Handler
-                0x0000000000001124       0x38 objs/drivers/serial.o
+                0x0000000000001200       0x38 objs/drivers/serial.o
  .text.UART_0_Handler
-                0x000000000000115c       0x10 objs/drivers/serial.o
-                0x000000000000115c                UART_0_Handler
+                0x0000000000001238       0x10 objs/drivers/serial.o
+                0x0000000000001238                UART_0_Handler
  .text.UART_1_Handler
-                0x000000000000116c       0x10 objs/drivers/serial.o
-                0x000000000000116c                UART_1_Handler
+                0x0000000000001248       0x10 objs/drivers/serial.o
+                0x0000000000001248                UART_1_Handler
  .text.serial_write
-                0x000000000000117c       0xbc objs/drivers/serial.o
-                0x000000000000117c                serial_write
+                0x0000000000001258       0xbc objs/drivers/serial.o
+                0x0000000000001258                serial_write
  .text.uart_clk_update
-                0x0000000000001238       0x30 objs/drivers/serial.o
-                0x0000000000001238                uart_clk_update
- .text.uart_on  0x0000000000001268       0x74 objs/drivers/serial.o
-                0x0000000000001268                uart_on
+                0x0000000000001314       0x30 objs/drivers/serial.o
+                0x0000000000001314                uart_clk_update
+ .text.uart_on  0x0000000000001344       0x74 objs/drivers/serial.o
+                0x0000000000001344                uart_on
  .text.RTC_Handler
-                0x00000000000012dc       0x3c objs/drivers/rtc.o
-                0x00000000000012dc                RTC_Handler
+                0x00000000000013b8       0x3c objs/drivers/rtc.o
+                0x00000000000013b8                RTC_Handler
  .text.TIMER_0_Handler
-                0x0000000000001318       0x18 objs/drivers/countertimers.o
-                0x0000000000001318                TIMER_0_Handler
+                0x00000000000013f4       0x18 objs/drivers/countertimers.o
+                0x00000000000013f4                TIMER_0_Handler
  .text.TIMER_1_Handler
-                0x0000000000001330       0x18 objs/drivers/countertimers.o
-                0x0000000000001330                TIMER_1_Handler
+                0x000000000000140c       0x18 objs/drivers/countertimers.o
+                0x000000000000140c                TIMER_1_Handler
  .text.TIMER_2_Handler
-                0x0000000000001348       0x18 objs/drivers/countertimers.o
-                0x0000000000001348                TIMER_2_Handler
+                0x0000000000001424       0x18 objs/drivers/countertimers.o
+                0x0000000000001424                TIMER_2_Handler
  .text.TIMER_3_Handler
-                0x0000000000001360       0x18 objs/drivers/countertimers.o
-                0x0000000000001360                TIMER_3_Handler
+                0x000000000000143c       0x18 objs/drivers/countertimers.o
+                0x000000000000143c                TIMER_3_Handler
  .text.I2C_0_Handler
-                0x0000000000001378      0x188 objs/drivers/i2c.o
-                0x0000000000001378                I2C_0_Handler
+                0x0000000000001454      0x188 objs/drivers/i2c.o
+                0x0000000000001454                I2C_0_Handler
  .text.i2c_clock_update
-                0x0000000000001500       0x2c objs/drivers/i2c.o
-                0x0000000000001500                i2c_clock_update
+                0x00000000000015dc       0x2c objs/drivers/i2c.o
+                0x00000000000015dc                i2c_clock_update
  .text.ADC_Handler
-                0x000000000000152c       0x1c objs/drivers/adc.o
-                0x000000000000152c                ADC_Handler
+                0x0000000000001608       0x1c objs/drivers/adc.o
+                0x0000000000001608                ADC_Handler
  .text.adc_clk_update
-                0x0000000000001548       0x24 objs/drivers/adc.o
-                0x0000000000001548                adc_clk_update
- .text.uprintf  0x000000000000156c       0x30 objs/lib/uprintf.o
-                0x000000000000156c                uprintf
- .text.memcpy   0x000000000000159c       0x44 objs/lib/string.o
-                0x000000000000159c                memcpy
- .text.convert  0x00000000000015e0      0x16c objs/lib/vsprintf.o
+                0x0000000000001624       0x24 objs/drivers/adc.o
+                0x0000000000001624                adc_clk_update
+ .text.uprintf  0x0000000000001648       0x30 objs/lib/uprintf.o
+                0x0000000000001648                uprintf
+ .text.memcpy   0x0000000000001678       0x44 objs/lib/string.o
+                0x0000000000001678                memcpy
+ .text.convert  0x00000000000016bc      0x16c objs/lib/vsprintf.o
  .text.vsnprintf
-                0x000000000000174c      0x184 objs/lib/vsprintf.o
-                0x000000000000174c                vsnprintf
+                0x0000000000001828      0x184 objs/lib/vsprintf.o
+                0x0000000000001828                vsnprintf
  .text.rf_rx_calback
-                0x00000000000018d0        0xc objs/apps/rf_sub1G/app_platform/main.o
-                0x00000000000018d0                rf_rx_calback
+                0x00000000000019ac        0xc objs/apps/rf_sub1G/app_platform/main.o
+                0x00000000000019ac                rf_rx_calback
+ .text.handle_uart_cmd
+                0x00000000000019b8       0x50 objs/apps/rf_sub1G/app_platform/main.o
+                0x00000000000019b8                handle_uart_cmd
  .text.fault_info
-                0x00000000000018dc        0xc objs/apps/rf_sub1G/app_platform/main.o
-                0x00000000000018dc                fault_info
+                0x0000000000001a08        0xc objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000000001a08                fault_info
  .text.rf_config
-                0x00000000000018e8       0x58 objs/apps/rf_sub1G/app_platform/main.o
-                0x00000000000018e8                rf_config
+                0x0000000000001a14       0x58 objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000000001a14                rf_config
  .text.handle_rf_rx_data
-                0x0000000000001940       0x74 objs/apps/rf_sub1G/app_platform/main.o
-                0x0000000000001940                handle_rf_rx_data
+                0x0000000000001a6c       0x80 objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000000001a6c                handle_rf_rx_data
+ .text.send_on_rf
+                0x0000000000001aec       0x54 objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000000001aec                send_on_rf
  .text.startup.main
-                0x00000000000019b4       0x98 objs/apps/rf_sub1G/app_platform/main.o
-                0x00000000000019b4                main
+                0x0000000000001b40      0x100 objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000000001b40                main
  *(SORT(.rodata*))
  .rodata.__FUNCTION__.3723
-                0x0000000000001a4c        0xc objs/core/fault_handlers.o
+                0x0000000000001c40        0xc objs/core/fault_handlers.o
  .rodata.__FUNCTION__.3731
-                0x0000000000001a58        0xc objs/core/fault_handlers.o
+                0x0000000000001c4c        0xc objs/core/fault_handlers.o
  .rodata.__FUNCTION__.3727
-                0x0000000000001a64       0x12 objs/core/fault_handlers.o
- *fill*         0x0000000000001a76        0x2 ff
+                0x0000000000001c58       0x12 objs/core/fault_handlers.o
+ *fill*         0x0000000000001c6a        0x2 ff
  .rodata.__FUNCTION__.3735
-                0x0000000000001a78        0xf objs/core/fault_handlers.o
- *fill*         0x0000000000001a87        0x1 ff
+                0x0000000000001c6c        0xf objs/core/fault_handlers.o
+ *fill*         0x0000000000001c7b        0x1 ff
  .rodata.pio_regs_handles_port0
-                0x0000000000001a88       0x80 objs/core/pio.o
+                0x0000000000001c7c       0x80 objs/core/pio.o
  .rodata.pio_regs_handles_port1
-                0x0000000000001b08       0x1c objs/core/pio.o
+                0x0000000000001cfc       0x1c objs/core/pio.o
  .rodata.pio_regs_handles_port2
-                0x0000000000001b24       0x40 objs/core/pio.o
+                0x0000000000001d18       0x40 objs/core/pio.o
  .rodata.status_led
-                0x0000000000001b64       0x2c objs/extdrv/status_led.o
- .rodata.steps  0x0000000000001b90        0xb objs/extdrv/status_led.o
- *fill*         0x0000000000001b9b        0x1 ff
+                0x0000000000001d58       0x2c objs/extdrv/status_led.o
+ .rodata.steps  0x0000000000001d84        0xb objs/extdrv/status_led.o
+ *fill*         0x0000000000001d8f        0x1 ff
  .rodata.rf_init_settings
-                0x0000000000001b9c       0x48 objs/extdrv/cc1101.o
+                0x0000000000001d90       0x48 objs/extdrv/cc1101.o
  .rodata.set_gpio_callback
-                0x0000000000001be4       0x14 objs/drivers/gpio.o
+                0x0000000000001dd8       0x14 objs/drivers/gpio.o
  .rodata.uart_defs
-                0x0000000000001bf8       0x10 objs/drivers/serial.o
+                0x0000000000001dec       0x10 objs/drivers/serial.o
  .rodata.I2C_0_Handler
-                0x0000000000001c08      0x164 objs/drivers/i2c.o
+                0x0000000000001dfc      0x164 objs/drivers/i2c.o
  .rodata.vsnprintf
-                0x0000000000001d6c       0xc8 objs/lib/vsprintf.o
+                0x0000000000001f60       0xc8 objs/lib/vsprintf.o
  .rodata.digits.3755
-                0x0000000000001e34       0x10 objs/lib/vsprintf.o
+                0x0000000000002028       0x10 objs/lib/vsprintf.o
  .rodata.cc1101_miso_pin
-                0x0000000000001e44        0x3 objs/apps/rf_sub1G/app_platform/main.o
-                0x0000000000001e44                cc1101_miso_pin
- *fill*         0x0000000000001e47        0x1 ff
+                0x0000000000002038        0x3 objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000000002038                cc1101_miso_pin
+ *fill*         0x000000000000203b        0x1 ff
  .rodata.status_led_red
-                0x0000000000001e48        0x3 objs/apps/rf_sub1G/app_platform/main.o
-                0x0000000000001e48                status_led_red
- *fill*         0x0000000000001e4b        0x1 ff
+                0x000000000000203c        0x3 objs/apps/rf_sub1G/app_platform/main.o
+                0x000000000000203c                status_led_red
+ *fill*         0x000000000000203f        0x1 ff
  .rodata.cc1101_gdo0
-                0x0000000000001e4c        0x3 objs/apps/rf_sub1G/app_platform/main.o
-                0x0000000000001e4c                cc1101_gdo0
- *fill*         0x0000000000001e4f        0x1 ff
+                0x0000000000002040        0x3 objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000000002040                cc1101_gdo0
+ *fill*         0x0000000000002043        0x1 ff
  .rodata.common_pins
-                0x0000000000001e50       0x40 objs/apps/rf_sub1G/app_platform/main.o
-                0x0000000000001e50                common_pins
+                0x0000000000002044       0x40 objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000000002044                common_pins
  .rodata.str1.4
-                0x0000000000001e90       0x60 objs/apps/rf_sub1G/app_platform/main.o
-                                         0x5e (size before relaxing)
+                0x0000000000002084       0x84 objs/apps/rf_sub1G/app_platform/main.o
+                                         0x82 (size before relaxing)
  .rodata.status_led_green
-                0x0000000000001ef0        0x3 objs/apps/rf_sub1G/app_platform/main.o
-                0x0000000000001ef0                status_led_green
- *fill*         0x0000000000001ef3        0x1 ff
+                0x0000000000002108        0x3 objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000000002108                status_led_green
+ *fill*         0x000000000000210b        0x1 ff
  .rodata.cc1101_cs_pin
-                0x0000000000001ef4        0x3 objs/apps/rf_sub1G/app_platform/main.o
-                0x0000000000001ef4                cc1101_cs_pin
+                0x000000000000210c        0x3 objs/apps/rf_sub1G/app_platform/main.o
+                0x000000000000210c                cc1101_cs_pin
  *(SORT(.got*))
-                0x0000000000001ef8                . = ALIGN (0x4)
- *fill*         0x0000000000001ef7        0x1 ff
-                0x0000000000001ef8                _end_text = .
+                0x0000000000002110                . = ALIGN (0x4)
+ *fill*         0x000000000000210f        0x1 ff
+                0x0000000000002110                _end_text = .
 
-.glue_7         0x0000000000001ef8        0x0
- .glue_7        0x0000000000001ef8        0x0 linker stubs
+.glue_7         0x0000000000002110        0x0
+ .glue_7        0x0000000000002110        0x0 linker stubs
 
-.glue_7t        0x0000000000001ef8        0x0
- .glue_7t       0x0000000000001ef8        0x0 linker stubs
+.glue_7t        0x0000000000002110        0x0
+ .glue_7t       0x0000000000002110        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000001ef8        0x0
- .vfp11_veneer  0x0000000000001ef8        0x0 linker stubs
+.vfp11_veneer   0x0000000000002110        0x0
+ .vfp11_veneer  0x0000000000002110        0x0 linker stubs
 
-.v4_bx          0x0000000000001ef8        0x0
- .v4_bx         0x0000000000001ef8        0x0 linker stubs
+.v4_bx          0x0000000000002110        0x0
+ .v4_bx         0x0000000000002110        0x0 linker stubs
 
-.iplt           0x0000000000001ef8        0x0
- .iplt          0x0000000000001ef8        0x0 objs/core/watchdog.o
+.iplt           0x0000000000002110        0x0
+ .iplt          0x0000000000002110        0x0 objs/core/watchdog.o
 
-.rel.dyn        0x0000000000001ef8        0x0
- .rel.iplt      0x0000000000001ef8        0x0 objs/core/watchdog.o
-                0x0000000000001ef8                . = ALIGN (0x4)
+.rel.dyn        0x0000000000002110        0x0
+ .rel.iplt      0x0000000000002110        0x0 objs/core/watchdog.o
+                0x0000000000002110                . = ALIGN (0x4)
 
-.data           0x0000000010000000      0x1c2 load address 0x0000000000001ef8
+.data           0x0000000010000000      0x1c2 load address 0x0000000000002110
                 0x0000000010000000                _start_data = .
  *(SORT(.data*))
  .data.lpc_private
@@ -1255,11 +1266,11 @@ LOAD objs/apps/rf_sub1G/app_platform/main.o
                 0x00000000100001bc        0x6 objs/apps/rf_sub1G/app_platform/main.o
                 0x00000000100001c2                _end_data = .
 
-.igot.plt       0x00000000100001c4        0x0 load address 0x00000000000020ba
+.igot.plt       0x00000000100001c4        0x0 load address 0x00000000000022d2
  .igot.plt      0x00000000100001c4        0x0 objs/core/watchdog.o
                 0x00000000100001c4                . = ALIGN (0x4)
 
-.bss            0x00000000100001c4      0x148 load address 0x00000000000020ba
+.bss            0x00000000100001c4      0x18c load address 0x00000000000022d2
                 0x00000000100001c4                _start_bss = .
  *(SORT(.bss*))
  .bss.wdt_callback
@@ -1296,18 +1307,22 @@ LOAD objs/apps/rf_sub1G/app_platform/main.o
  .bss.adc_int_callback
                 0x00000000100002fc        0x4 objs/drivers/adc.o
                 0x00000000100002fc                adc_int_callback
- .bss.check_rx  0x0000000010000300        0x4 objs/apps/rf_sub1G/app_platform/main.o
+ .bss.cc_tx     0x0000000010000300        0x4 objs/apps/rf_sub1G/app_platform/main.o
+ .bss.cc_tx_buff
+                0x0000000010000304       0x40 objs/apps/rf_sub1G/app_platform/main.o
+ .bss.check_rx  0x0000000010000344        0x4 objs/apps/rf_sub1G/app_platform/main.o
  .bss.periodic_match
-                0x0000000010000304        0x1 objs/drivers/rtc.o
- .bss.loop.4533
-                0x0000000010000305        0x1 objs/apps/rf_sub1G/app_platform/main.o
+                0x0000000010000348        0x1 objs/drivers/rtc.o
+ .bss.loop.4545
+                0x0000000010000349        0x1 objs/apps/rf_sub1G/app_platform/main.o
+ .bss.cc_ptr    0x000000001000034a        0x1 objs/apps/rf_sub1G/app_platform/main.o
  *(SORT(COMMON))
- *fill*         0x0000000010000306        0x2 
- COMMON         0x0000000010000308        0x4 objs/core/rom_helpers.o
-                0x0000000010000308                iap_entry
-                0x000000001000030c                _end_bss = .
-                0x000000001000030c                . = ALIGN (0x4)
-                0x000000001000030c                _end = .
+ *fill*         0x000000001000034b        0x1 
+ COMMON         0x000000001000034c        0x4 objs/core/rom_helpers.o
+                0x000000001000034c                iap_entry
+                0x0000000010000350                _end_bss = .
+                0x0000000010000350                . = ALIGN (0x4)
+                0x0000000010000350                _end = .
                 [!provide]                        PROVIDE (end, .)
 OUTPUT(apps/rf_sub1G/app_platform/app_platform.elf elf32-littlearm)
 
