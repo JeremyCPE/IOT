@@ -390,7 +390,8 @@ int8_t handle_rf_rx_data(void)
 	ret = cc1101_receive_packet(data, RF_BUFF_LEN, &status);
 	/* Go back to RX mode */
 	cc1101_enter_rx_mode();
-	ordre[0] = &data[2];
+	//ordre[0] = &data[2];
+	memcpy(&ordre[0], &data[2], sizeof(256));
 
 #ifdef DEBUG
 	uprintf(UART0, "RF: ret:%d, st: %d.\n\r", ret, status);
@@ -628,7 +629,7 @@ int main(void)
 		}
 		if (check_rx == 1) {
 			check_rx = 0;
-			ordre = handle_rf_rx_data();
+			check_rx = handle_rf_rx_data();
             uprintf(UART0, "Données recues: %d", ordre);
 		}
 	}
