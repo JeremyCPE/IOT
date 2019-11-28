@@ -82,12 +82,13 @@ public class ReceiverTask extends AsyncTask<Void, byte[], Void> {
     protected void changeTextViewValue(JSONObject obj) throws JSONException {
             // get carac from JSON
         String temp = obj.getString("temperature");
-        String light = obj.getString("light");
         String hum = obj.getString("humidity");
+        String light = obj.getString("light");
             // set in TextView's
         altv.get(0).setText("Température: "+temp + "°C");
-        altv.get(1).setText("Luminosité: "+light + "Lux");
-        altv.get(2).setText("Humidity:"+hum + "%");
+        altv.get(1).setText("Humidity:"+hum + "%");
+        altv.get(2).setText("Luminosité: "+light + "Lux");
+
 
 
     }

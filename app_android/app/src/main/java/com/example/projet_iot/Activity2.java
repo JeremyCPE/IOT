@@ -35,13 +35,17 @@ public class Activity2 extends AppCompatActivity {
         final ImageButton secondDownButton = findViewById(R.id.secondDownButton);
         final ImageButton thirdUpButton = findViewById(R.id.thirdUpButton);
 
+        final TextView printTemp = findViewById(R.id.printTemp);
+        final TextView printHumidity = findViewById(R.id.printHumidity);
+        final TextView printLuminosity = findViewById(R.id.printLuminosity);
+
         final TextView firstText = findViewById(R.id.firstText);
         final TextView secondText = findViewById(R.id.secondText);
         final TextView thirdText = findViewById(R.id.thirdText);
         final ArrayList<TextView> arrayTextView = new ArrayList<>();
-        arrayTextView.add(firstText);
-        arrayTextView.add(secondText);
-        arrayTextView.add(thirdText);
+        arrayTextView.add(printTemp);
+        arrayTextView.add(printHumidity);
+        arrayTextView.add(printLuminosity);
 
         firstDownButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
